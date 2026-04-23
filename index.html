@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Submeta seu projeto — Superteam Brasil × Replit</title>
+    <meta name="description" content="Portal oficial de submissão. Submete teu projeto, a Replit revisa e libera os créditos." />
+    <meta name="theme-color" content="#f5e8ca" />
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link rel="canonical" href="https://replit.superteambr.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://replit.superteambr.com/" />
+    <meta property="og:title" content="Submete teu projeto — Superteam Brasil × Replit" />
+    <meta property="og:description" content="$10.000 USDC + créditos Replit pro top 10 do Brazil Track." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112.5,500..900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ================================================================== */
+      /*  TOKENS                                                             */
+      /* ================================================================== */
+      :root {
+        --cream: #f5e8ca;
+        --cream-warm: #fbf5eb;
+        --cream-deep: #ece0be;
+        --ink: #1b231d;
+        --ink-warm: #2c3a30;
+        --ink-mid: #4a5a4f;
+        --emerald: #008b4c;
+        --emerald-deep: #006638;
+        --emerald-soft: rgba(0, 139, 76, 0.08);
+        --green-dark: #306c40;
+        --yellow: #ffd23f;
+        --orange: #f26207;
+
+        --border: rgba(27, 35, 29, 0.12);
+        --border-mid: rgba(27, 35, 29, 0.22);
+        --border-strong: rgba(27, 35, 29, 0.45);
+
+        --shadow-sm: 0 1px 2px rgba(27, 35, 29, 0.04), 0 2px 8px rgba(27, 35, 29, 0.04);
+        --shadow-md: 0 4px 12px rgba(27, 35, 29, 0.08), 0 16px 40px rgba(27, 35, 29, 0.06);
+        --shadow-lg: 0 12px 32px rgba(27, 35, 29, 0.14), 0 32px 80px rgba(27, 35, 29, 0.12);
+
+        --display: "Archivo", sans-serif;
+        --body: "Inter", sans-serif;
+
+        --rail: min(1240px, 100% - 3rem);
+        --rail-narrow: min(920px, 100% - 3rem);
+
+        --space-section: clamp(5rem, 10vw, 10rem);
+
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* ================================================================== */
+      /*  RESET                                                              */
+      /* ================================================================== */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+      body {
+        font-family: var(--body);
+        font-size: 17px;
+        line-height: 1.55;
+        color: var(--ink);
+        background: var(--cream);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+      body.no-scroll { overflow: hidden; }
+      img, svg { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+      input, textarea, select { font: inherit; color: inherit; }
+      ::selection { background: var(--emerald); color: var(--cream); }
+
+      body::before {
+        content: "";
+        position: fixed; inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.14  0 0 0 0 0.11  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        opacity: 0.5;
+        mix-blend-mode: multiply;
+      }
+
+      .rail { width: var(--rail); margin: 0 auto; }
+      .rail-narrow { width: var(--rail-narrow); margin: 0 auto; }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-family: var(--body);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink-warm);
+      }
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 1px;
+        background: currentColor;
+      }
+      .eyebrow-light { color: var(--cream-deep); }
+      .eyebrow-light::before { background: var(--cream-deep); }
+
+      h1, h2, h3, h4 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-stretch: 112.5%;
+        letter-spacing: -0.025em;
+        color: var(--ink);
+      }
+
+      /* ================================================================== */
+      /*  BUTTONS                                                            */
+      /* ================================================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.95rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: -0.005em;
+        border: 1px solid transparent;
+        transition: transform 0.22s var(--ease), box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+        white-space: nowrap;
+      }
+      .btn:active { transform: scale(0.98); }
+
+      .btn-primary {
+        background: var(--ink);
+        color: var(--cream);
+        box-shadow: 0 2px 0 rgba(0,0,0,0.08), 0 8px 18px rgba(27,35,29,0.16);
+      }
+      .btn-primary:hover {
+        background: var(--emerald);
+        box-shadow: 0 2px 0 var(--emerald-deep), 0 10px 24px rgba(0, 139, 76, 0.28);
+        transform: translateY(-1px);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--border-mid);
+      }
+      .btn-ghost:hover {
+        border-color: var(--ink);
+        background: var(--cream-warm);
+      }
+
+      .btn-large { padding: 1.15rem 2rem; font-size: 1.02rem; }
+      .btn-full { width: 100%; }
+      .btn-arrow { display: inline-block; transition: transform 0.2s ease; }
+      .btn:hover .btn-arrow { transform: translateX(3px); }
+
+      /* ================================================================== */
+      /*  NAV — minimal                                                      */
+      /* ================================================================== */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(245, 232, 202, 0.78);
+        backdrop-filter: saturate(1.4) blur(14px);
+        -webkit-backdrop-filter: saturate(1.4) blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        width: var(--rail);
+        margin: 0 auto;
+        height: 4.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-symbol {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .nav-symbol img { height: 26px; width: auto; }
+      .nav-symbol .divider {
+        width: 1px;
+        height: 18px;
+        background: var(--border-mid);
+      }
+      .nav-symbol .replit-mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 26px;
+        padding: 0 0.55rem;
+        border-radius: 6px;
+        background: var(--orange);
+        color: var(--cream-warm);
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 0.82rem;
+        letter-spacing: -0.02em;
+      }
+
+      /* ================================================================== */
+      /*  HERO — cinematic full-viewport                                     */
+      /* ================================================================== */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      /* atmospheric layers — stacked, each contributing depth */
+      .hero-atmos {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .hero-atmos::before,
+      .hero-atmos::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+      }
+      .hero-atmos::before {
+        top: -20%;
+        right: -10%;
+        width: 60vw;
+        height: 60vw;
+        max-width: 900px;
+        max-height: 900px;
+        background: radial-gradient(closest-side, rgba(0, 139, 76, 0.28), transparent 70%);
+        animation: pulseGlow 14s ease-in-out infinite alternate;
+      }
+      .hero-atmos::after {
+        bottom: -25%;
+        left: -15%;
+        width: 55vw;
+        height: 55vw;
+        max-width: 800px;
+        max-height: 800px;
+        background: radial-gradient(closest-side, rgba(242, 98, 7, 0.18), transparent 70%);
+        animation: pulseGlow 18s ease-in-out -4s infinite alternate;
+      }
+      @keyframes pulseGlow {
+        from { opacity: 0.7; transform: scale(1); }
+        to { opacity: 1; transform: scale(1.08); }
+      }
+
+      /* subtle grid lines for editorial grounding */
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image:
+          linear-gradient(to right, rgba(27, 35, 29, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(27, 35, 29, 0.04) 1px, transparent 1px);
+        background-size: 96px 96px;
+        mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+        -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+        pointer-events: none;
+      }
+
+      /* hero shapes removed — atmosphere + grid carry the depth */
+
+      /* structure */
+      .hero-inner {
+        width: var(--rail);
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        padding: 2.5rem 0 0;
+      }
+
+      .hero-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+      .hero-top-meta {
+        display: none;
+        font-family: var(--display);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink-mid);
+      }
+      @media (min-width: 720px) {
+        .hero-top-meta { display: inline-flex; gap: 0.6rem; align-items: center; }
+        .hero-top-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); animation: pulse 2.4s infinite; }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.35; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1.1); }
+      }
+
+      /* brand lockup pill — STBR logo + × + Replit logo, prominent */
+      .brand-lockup {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.1rem;
+        padding: 0.75rem 1.35rem;
+        background: var(--cream-warm);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        box-shadow: var(--shadow-md);
+      }
+      .brand-lockup .stbr-logo {
+        height: 28px;
+        width: auto;
+        display: block;
+      }
+      .brand-lockup .x {
+        font-family: var(--display);
+        font-weight: 500;
+        color: var(--ink-mid);
+        font-size: 1.1rem;
+      }
+      .brand-lockup .replit-logo {
+        height: 24px;
+        width: auto;
+        display: block;
+      }
+      @media (max-width: 560px) {
+        .brand-lockup {
+          gap: 0.85rem;
+          padding: 0.6rem 1.1rem;
+        }
+        .brand-lockup .stbr-logo { height: 22px; }
+        .brand-lockup .replit-logo { height: 20px; }
+      }
+
+      .hero-center {
+        align-self: center;
+        padding: 4rem 0 3rem;
+      }
+      @media (max-width: 720px) {
+        .hero-center { padding: 3rem 0 2rem; }
+      }
+
+      .hero-headline {
+        font-size: clamp(3rem, 11vw, 10rem);
+        font-weight: 900;
+        font-stretch: 112.5%;
+        line-height: 0.88;
+        letter-spacing: -0.05em;
+        margin: 0 0 2rem;
+      }
+      .hero-headline .line {
+        display: block;
+        overflow: hidden;
+      }
+      .hero-headline .line > span {
+        display: inline-block;
+        transform: translateY(110%);
+        opacity: 0;
+        animation: lineUp 1s var(--ease) forwards;
+      }
+      .hero-headline .line:nth-child(1) > span { animation-delay: 0.1s; }
+      .hero-headline .line:nth-child(2) > span { animation-delay: 0.28s; }
+      .hero-headline .line:nth-child(3) > span { animation-delay: 0.46s; }
+      @keyframes lineUp {
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .hero-headline em {
+        font-style: normal;
+        color: var(--emerald);
+        position: relative;
+      }
+      .hero-headline em::after {
+        content: "";
+        position: absolute;
+        left: -0.06em;
+        right: -0.06em;
+        bottom: 0.05em;
+        height: 0.2em;
+        background: var(--yellow);
+        z-index: -1;
+        transform-origin: left;
+        transform: scaleX(0);
+        animation: swipe 0.9s var(--ease) 1.25s forwards;
+      }
+      @keyframes swipe {
+        to { transform: scaleX(1); }
+      }
+
+      .hero-lead {
+        font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+        line-height: 1.5;
+        color: var(--ink-warm);
+        max-width: 46ch;
+        margin-bottom: 2.4rem;
+        opacity: 0;
+        animation: fadeUp 0.9s var(--ease) 1.4s forwards;
+      }
+      @keyframes fadeUp {
+        from { transform: translateY(12px); }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .hero-lead strong {
+        color: var(--ink);
+        font-weight: 700;
+        background: var(--yellow);
+        padding: 0 0.28rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        opacity: 0;
+        animation: fadeUp 0.9s var(--ease) 1.55s forwards;
+      }
+
+      /* bottom row: ticker + scroll cue */
+      .hero-bottom {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.25rem 0 2rem;
+        border-top: 1px solid var(--border);
+        opacity: 0;
+        animation: fadeUp 0.9s var(--ease) 1.75s forwards;
+      }
+      @media (max-width: 720px) {
+        .hero-bottom { grid-template-columns: 1fr; }
+      }
+
+      .hero-ticker {
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      }
+      .ticker-track {
+        display: inline-flex;
+        gap: 2rem;
+        animation: ticker 42s linear infinite;
+        white-space: nowrap;
+      }
+      .ticker-track > span {
+        font-family: var(--display);
+        font-size: 0.86rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--ink-warm);
+      }
+      .ticker-track > span.sep {
+        color: var(--emerald);
+        font-weight: 800;
+      }
+      .ticker-track > span.accent {
+        color: var(--orange);
+      }
+      @keyframes ticker {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      .hero-scroll {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-mid);
+        transition: color 0.25s;
+      }
+      .hero-scroll:hover { color: var(--ink); }
+      .hero-scroll .arrow {
+        display: inline-block;
+        animation: scrollArrow 1.6s ease-in-out infinite;
+      }
+      @keyframes scrollArrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(4px); }
+      }
+
+      /* ================================================================== */
+      /*  HOW IT WORKS                                                       */
+      /* ================================================================== */
+      .how { padding: var(--space-section) 0 calc(var(--space-section) / 1.6); }
+      .how-inner { width: var(--rail); margin: 0 auto; }
+
+      .section-heading {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+        margin-bottom: 3.5rem;
+        max-width: 48rem;
+      }
+      .section-heading h2 {
+        font-size: clamp(2.25rem, 4.5vw, 4rem);
+        line-height: 0.95;
+        letter-spacing: -0.035em;
+      }
+      .section-heading .lead {
+        font-size: clamp(1rem, 1.4vw, 1.12rem);
+        color: var(--ink-warm);
+        max-width: 52ch;
+        line-height: 1.6;
+      }
+
+      .how-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        list-style: none;
+      }
+      @media (max-width: 880px) {
+        .how-steps { grid-template-columns: 1fr; }
+      }
+      .how-step {
+        position: relative;
+        padding: 2.5rem 2rem 2.25rem;
+        background: var(--cream-warm);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.32s var(--ease), box-shadow 0.32s ease, border-color 0.32s ease;
+      }
+      .how-step:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--ink);
+      }
+      .how-step-clickable { cursor: pointer; padding-bottom: 3.5rem; }
+      .how-step-clickable:hover {
+        border-color: var(--emerald);
+        box-shadow: 0 12px 32px rgba(0, 139, 76, 0.14), 0 4px 12px rgba(27, 35, 29, 0.06);
+      }
+      .how-step-clickable:hover .how-step-arrow { color: var(--emerald); transform: translateX(4px); }
+      .how-step-overlay {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 2;
+      }
+      .how-step-overlay:focus-visible {
+        outline: 2px solid var(--emerald);
+        outline-offset: 2px;
+      }
+      .how-step-arrow {
+        position: absolute;
+        left: 2rem;
+        bottom: 1.5rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: var(--ink-mid);
+        transition: color 0.2s ease, transform 0.2s var(--ease);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .how-step-num {
+        font-family: var(--display);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: var(--emerald);
+        margin-bottom: 2.75rem;
+      }
+      .how-step h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.12;
+      }
+      .how-step p {
+        font-size: 0.98rem;
+        color: var(--ink-warm);
+        line-height: 1.6;
+      }
+      .how-step strong { color: var(--ink); font-weight: 600; }
+      .how-step .cpn {
+        display: inline-block;
+        padding: 0.08rem 0.5rem;
+        background: var(--ink);
+        color: var(--cream);
+        border-radius: 4px;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 0.88em;
+        letter-spacing: 0.04em;
+      }
+      .how-step .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.1rem 0.4rem;
+        background: rgba(242, 98, 7, 0.12);
+        color: var(--orange);
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.88em;
+      }
+      .how-step .mention {
+        color: var(--ink);
+        font-weight: 700;
+        background: rgba(255, 210, 63, 0.5);
+        padding: 0 0.2rem;
+        border-radius: 3px;
+      }
+
+      /* ================================================================== */
+      /*  PRIZES — DARK ANCHOR                                               */
+      /* ================================================================== */
+      .prizes {
+        background: var(--ink);
+        color: var(--cream);
+        padding: var(--space-section) 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .prizes::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(800px circle at 85% 10%, rgba(0, 139, 76, 0.14), transparent 60%),
+          radial-gradient(600px circle at 10% 80%, rgba(242, 98, 7, 0.08), transparent 60%);
+        pointer-events: none;
+      }
+      .prizes-inner {
+        width: var(--rail);
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .prizes .section-heading h2 { color: var(--cream); }
+      .prizes .section-heading h2 em {
+        font-style: normal;
+        color: var(--yellow);
+      }
+      .prizes .section-heading .lead { color: rgba(245, 232, 202, 0.72); }
+      .prizes .section-heading .lead strong { color: var(--cream); font-weight: 600; }
+
+      .section-heading-center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        align-items: center;
+      }
+      .section-heading-center .eyebrow { justify-content: center; }
+
+      .prize-grid {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 220px) minmax(0, 220px);
+        gap: 0;
+        max-width: 640px;
+        margin: 0 auto;
+        justify-content: center;
+      }
+      .prize-grid > * {
+        padding: 1.3rem 1.5rem;
+        border-top: 1px solid rgba(245, 232, 202, 0.12);
+      }
+      .prize-grid > *:nth-last-child(-n+3) {
+        border-bottom: 1px solid rgba(245, 232, 202, 0.12);
+      }
+      .prize-head {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(245, 232, 202, 0.5);
+      }
+      .prize-pos {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--cream);
+      }
+      .prize-usdc {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--cream);
+      }
+      .prize-credits {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--orange);
+      }
+      .prize-row-top .prize-pos,
+      .prize-row-top .prize-usdc { color: var(--yellow); }
+
+      .prizes-footnote {
+        margin: 2.5rem auto 0;
+        display: grid;
+        gap: 0.75rem;
+        font-size: 0.88rem;
+        color: rgba(245, 232, 202, 0.6);
+        max-width: 58ch;
+        text-align: center;
+      }
+      .prizes-footnote strong { color: var(--cream); font-weight: 600; }
+
+      @media (max-width: 720px) {
+        .prize-grid { grid-template-columns: 84px 1fr 1fr; }
+        .prize-grid > * { padding: 1rem 0.75rem; }
+        .prize-usdc, .prize-credits { font-size: 1.08rem; }
+        .prize-head { letter-spacing: 0.12em; }
+      }
+
+      /* ================================================================== */
+      /*  FAQ — NATIVE ACCORDION                                             */
+      /* ================================================================== */
+      .faq { padding: var(--space-section) 0; }
+      .faq-inner { width: var(--rail-narrow); margin: 0 auto; }
+
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid var(--border);
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--border);
+      }
+      .faq-item summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 1.65rem 0;
+        font-family: var(--display);
+        font-size: 1.18rem;
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.5rem;
+        position: relative;
+        transition: color 0.25s ease;
+      }
+      .faq-item summary::-webkit-details-marker { display: none; }
+      .faq-item summary:hover { color: var(--emerald); }
+      .faq-item summary::after {
+        content: "";
+        flex-shrink: 0;
+        margin-top: 0.55rem;
+        width: 14px;
+        height: 14px;
+        background-image:
+          linear-gradient(var(--ink), var(--ink)),
+          linear-gradient(var(--ink), var(--ink));
+        background-size: 14px 1.5px, 1.5px 14px;
+        background-position: center, center;
+        background-repeat: no-repeat;
+        transition: transform 0.35s var(--ease);
+      }
+      .faq-item[open] summary::after {
+        background-size: 14px 1.5px, 0 0;
+        transform: rotate(180deg);
+      }
+      .faq-item[open] summary { color: var(--emerald); }
+
+      .faq-answer {
+        overflow: hidden;
+        font-size: 1rem;
+        color: var(--ink-warm);
+        line-height: 1.65;
+        padding: 0 0 1.7rem;
+        max-width: 62ch;
+        animation: faqOpen 0.42s var(--ease);
+      }
+      @keyframes faqOpen {
+        from { opacity: 0; transform: translateY(-6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .faq-answer a {
+        color: var(--emerald);
+        border-bottom: 1px solid currentColor;
+      }
+      .faq-answer strong { color: var(--ink); font-weight: 600; }
+
+      /* ================================================================== */
+      /*  FINAL CTA                                                          */
+      /* ================================================================== */
+      .final-cta { padding: clamp(3rem, 6vw, 6rem) 0 var(--space-section); }
+      .final-cta-inner {
+        width: var(--rail);
+        margin: 0 auto;
+        padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+        background: var(--ink);
+        color: var(--cream);
+        border-radius: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+        position: relative;
+        overflow: hidden;
+      }
+      .final-cta-inner::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        right: -10%;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(closest-side, rgba(255, 210, 63, 0.28), transparent);
+        pointer-events: none;
+      }
+      .final-cta h2 {
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
+        color: var(--cream);
+        line-height: 0.95;
+        letter-spacing: -0.035em;
+        position: relative;
+        z-index: 1;
+      }
+      .final-cta h2 em { font-style: normal; color: var(--yellow); }
+      .final-cta p {
+        font-size: 1.05rem;
+        color: rgba(245, 232, 202, 0.75);
+        max-width: 48ch;
+        position: relative;
+        z-index: 1;
+      }
+      .final-cta .btn {
+        background: var(--yellow);
+        color: var(--ink);
+        position: relative;
+        z-index: 1;
+      }
+      .final-cta .btn:hover {
+        background: var(--cream);
+        transform: translateY(-1px);
+      }
+
+      /* ================================================================== */
+      /*  FOOTER — compact: logo + socials                                   */
+      /* ================================================================== */
+      .footer {
+        border-top: 1px solid var(--border);
+        padding: 1.5rem 0;
+        background: var(--cream-warm);
+      }
+      .footer-inner {
+        width: var(--rail);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .footer-logo { display: inline-flex; align-items: center; }
+      .footer-logo img {
+        height: 24px;
+        width: auto;
+        display: block;
+      }
+      .footer-socials {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+      }
+      .footer-socials a {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--ink-warm);
+        transition: color 0.2s ease;
+      }
+      .footer-socials a:hover { color: var(--emerald); }
+
+      /* ================================================================== */
+      /*  MODAL                                                              */
+      /* ================================================================== */
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(27, 35, 29, 0.55);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.32s ease, visibility 0.32s ease;
+      }
+      .modal.active { opacity: 1; visibility: visible; }
+
+      .modal-card {
+        background: var(--cream-warm);
+        width: 100%;
+        max-width: 720px;
+        max-height: calc(100vh - 2rem);
+        border-radius: 28px;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--border);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transform: translateY(24px) scale(0.98);
+        opacity: 0;
+        transition: transform 0.4s var(--ease), opacity 0.3s ease;
+      }
+      .modal.active .modal-card { transform: translateY(0) scale(1); opacity: 1; }
+
+      .modal-view {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+      }
+      .modal-view[hidden] { display: none; }
+
+      .modal-header {
+        padding: 2rem 2.25rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+      .modal-header .eyebrow { margin-bottom: 0.6rem; }
+      .modal-header h2 {
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+      .modal-header p { font-size: 0.92rem; color: var(--ink-mid); }
+
+      .modal-close {
+        position: absolute;
+        top: 1.35rem;
+        right: 1.35rem;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--cream);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: var(--ink);
+        transition: background 0.2s, transform 0.3s var(--ease), color 0.2s;
+        z-index: 2;
+      }
+      .modal-close:hover {
+        background: var(--ink);
+        color: var(--cream);
+        transform: rotate(90deg);
+      }
+
+      .modal-body {
+        overflow-y: auto;
+        padding: 1.75rem 2.25rem 2rem;
+        flex: 1;
+      }
+
+      /* ================================================================== */
+      /*  FORM                                                               */
+      /* ================================================================== */
+      .form-grid { display: grid; gap: 1.1rem; }
+      .form-field { display: flex; flex-direction: column; }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      @media (max-width: 560px) {
+        .form-row { grid-template-columns: 1fr; }
+      }
+
+      .form-label {
+        font-family: var(--body);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 0.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+      .form-label .hint {
+        font-weight: 400;
+        font-size: 0.78rem;
+        color: var(--ink-mid);
+      }
+      .form-label .req {
+        color: var(--emerald);
+        font-size: 0.6rem;
+      }
+
+      .form-input, .form-textarea {
+        width: 100%;
+        padding: 0.85rem 0.95rem;
+        background: var(--cream-warm);
+        border: 1px solid var(--border-mid);
+        border-radius: 10px;
+        font-size: 0.96rem;
+        color: var(--ink);
+        transition: border-color 0.18s ease, box-shadow 0.18s ease;
+      }
+      .form-input::placeholder, .form-textarea::placeholder {
+        color: rgba(27, 35, 29, 0.4);
+      }
+      .form-input:focus, .form-textarea:focus {
+        outline: none;
+        border-color: var(--emerald);
+        box-shadow: 0 0 0 4px var(--emerald-soft);
+      }
+      .form-input:user-invalid, .form-textarea:user-invalid {
+        border-color: #c23a2f;
+      }
+      .form-textarea { min-height: 88px; resize: vertical; }
+
+      .form-help {
+        font-size: 0.82rem;
+        color: var(--ink-mid);
+        margin-top: 0.4rem;
+        line-height: 1.45;
+      }
+      .form-help strong { color: var(--ink); font-weight: 600; }
+
+      .form-field-critical .form-input {
+        border-color: var(--border-strong);
+        box-shadow: inset 2px 0 0 var(--emerald);
+      }
+      .form-field-critical .form-input:focus {
+        box-shadow: inset 2px 0 0 var(--emerald), 0 0 0 4px var(--emerald-soft);
+      }
+
+      .form-radio-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+      @media (max-width: 560px) {
+        .form-radio-group { grid-template-columns: 1fr; }
+      }
+      .form-radio {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.75rem 0.9rem;
+        background: var(--cream-warm);
+        border: 1px solid var(--border-mid);
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.92rem;
+        transition: border-color 0.18s ease, background 0.18s ease;
+      }
+      .form-radio:hover { border-color: var(--ink); }
+      .form-radio input { accent-color: var(--emerald); width: 1rem; height: 1rem; }
+      .form-radio:has(input:checked) {
+        border-color: var(--emerald);
+        background: var(--emerald-soft);
+      }
+      .form-radio:has(input:checked) span { font-weight: 600; }
+
+      .form-check {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.9rem 1rem;
+        background: var(--cream);
+        border: 1px solid var(--border-mid);
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        color: var(--ink-warm);
+      }
+      .form-check:has(input:checked) {
+        background: var(--emerald-soft);
+        border-color: var(--emerald);
+      }
+      .form-check input {
+        accent-color: var(--emerald);
+        width: 1.05rem;
+        height: 1.05rem;
+        margin-top: 0.15rem;
+        flex-shrink: 0;
+      }
+      .form-check strong { color: var(--ink); font-weight: 700; }
+      .form-check a {
+        color: var(--emerald);
+        font-weight: 600;
+        border-bottom: 1px solid currentColor;
+      }
+
+      .form-submit-area {
+        margin-top: 0.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .form-microcopy {
+        font-size: 0.78rem;
+        color: var(--ink-mid);
+        line-height: 1.5;
+        text-align: center;
+      }
+      .form-microcopy a { color: var(--emerald); font-weight: 600; }
+
+      /* ================================================================== */
+      /*  SUCCESS — THE PROTOCOLO RECEIPT                                    */
+      /* ================================================================== */
+      .success {
+        padding: 2.5rem 2.25rem 2.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        overflow-y: auto;
+      }
+      .success-stamp {
+        position: relative;
+        padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+        background: var(--cream);
+        border: 1.5px solid var(--ink);
+        border-radius: 14px;
+        box-shadow: 6px 6px 0 var(--ink);
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        animation: stampIn 0.6s var(--ease);
+      }
+      @keyframes stampIn {
+        0% { transform: scale(0.8) rotate(-4deg); opacity: 0; }
+        60% { transform: scale(1.03) rotate(1deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0); opacity: 1; }
+      }
+      .success-stamp::before {
+        content: "SUBMISSÃO RECEBIDA";
+        position: absolute;
+        top: 0.8rem;
+        right: 1.1rem;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        color: var(--emerald);
+        padding: 0.3rem 0.55rem;
+        border: 1.5px solid var(--emerald);
+        border-radius: 4px;
+        transform: rotate(5deg);
+      }
+      .success-stamp-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-mid);
+      }
+      .success-stamp-id {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(1.4rem, 4vw, 2.1rem);
+        letter-spacing: 0.08em;
+        color: var(--ink);
+      }
+      .success-stamp-copy {
+        margin-top: 0.65rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8rem;
+        color: var(--ink-mid);
+        align-self: flex-start;
+        font-weight: 500;
+      }
+      .success-stamp-copy:hover { color: var(--emerald); }
+
+      .success-body h2 {
+        font-size: clamp(1.7rem, 3vw, 2.25rem);
+        line-height: 1.05;
+        margin-bottom: 0.65rem;
+      }
+      .success-body p {
+        font-size: 0.98rem;
+        color: var(--ink-warm);
+        line-height: 1.6;
+      }
+
+      .success-next {
+        background: var(--cream);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.35rem 1.5rem;
+      }
+      .success-next .eyebrow { margin-bottom: 1rem; }
+      .success-next ol {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        list-style: none;
+        counter-reset: step;
+      }
+      .success-next li {
+        font-size: 0.92rem;
+        color: var(--ink-warm);
+        line-height: 1.5;
+        padding-left: 2.3rem;
+        position: relative;
+        counter-increment: step;
+      }
+      .success-next li::before {
+        content: counter(step, decimal-leading-zero);
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--emerald);
+        letter-spacing: 0.12em;
+      }
+
+      .success-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      /* ================================================================== */
+      /*  SCROLL REVEALS                                                     */
+      /* ================================================================== */
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.7s ease, transform 0.7s var(--ease);
+      }
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] { opacity: 1; transform: none; transition: none; }
+        .modal-card, .hero-headline .line span, .hero-headline em::after, .hero-shape-1, .hero-shape-2, .divider-shape img {
+          animation: none !important;
+          transition: none !important;
+        }
+        .hero-headline .line span { transform: none; opacity: 1; }
+        .hero-headline em::after { transform: scaleX(1); }
+      }
+    </style>
+  </head>
+  <body>
+
+    <main id="top">
+      <!-- ========================================================== -->
+      <!--  HERO — cinematic                                           -->
+      <!-- ========================================================== -->
+      <section class="hero">
+        <div class="hero-atmos" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+          <div class="hero-top">
+            <span class="brand-lockup">
+              <img
+                class="stbr-logo"
+                src="./ST-EMERAL-GREEN-HORIZONTAL.png"
+                alt="Superteam Brasil"
+              />
+              <span class="x" aria-hidden="true">×</span>
+              <img
+                class="replit-logo"
+                src="./replit-logo_brandlogos.net_afdxm.png"
+                alt="Replit"
+              />
+            </span>
+          </div>
+
+          <div class="hero-center">
+            <h1 class="hero-headline">
+              <span class="line"><span>Construiu.</span></span>
+              <span class="line"><span>Postou.</span></span>
+              <span class="line"><span><em>Submeta.</em></span></span>
+            </h1>
+
+            <p class="hero-lead">
+              Submeta seu projeto e garanta seus créditos Replit. <strong>Em dois minutos.</strong>
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary btn-large" data-open-modal>
+                Quero submeter meu projeto <span class="btn-arrow">→</span>
+              </button>
+              <a href="#como-funciona" class="btn btn-ghost btn-large">Como funciona</a>
+            </div>
+          </div>
+
+          <div class="hero-bottom">
+            <div class="hero-ticker" aria-hidden="true">
+              <div class="ticker-track">
+                <span>$10.000 USDC</span>
+                <span class="sep">✦</span>
+                <span>Créditos Replit pro top 10</span>
+                <span class="sep">✦</span>
+                <span class="accent">Cupom SUPERTEAM20</span>
+                <span class="sep">✦</span>
+                <span>The Garage · Solana House SP</span>
+                <span class="sep">✦</span>
+                <span>Brazil Track · Frontier 2026</span>
+                <span class="sep">✦</span>
+                <!-- duplicate for seamless loop -->
+                <span>$10.000 USDC</span>
+                <span class="sep">✦</span>
+                <span>Créditos Replit pro top 10</span>
+                <span class="sep">✦</span>
+                <span class="accent">Cupom SUPERTEAM20</span>
+                <span class="sep">✦</span>
+                <span>The Garage · Solana House SP</span>
+                <span class="sep">✦</span>
+                <span>Brazil Track · Frontier 2026</span>
+                <span class="sep">✦</span>
+              </div>
+            </div>
+            <a href="#como-funciona" class="hero-scroll">
+              <span>Rola</span>
+              <span class="arrow">↓</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <!--  HOW IT WORKS                                               -->
+      <!-- ========================================================== -->
+      <section class="how" id="como-funciona">
+        <div class="how-inner">
+          <div class="section-heading" data-reveal>
+            <span class="eyebrow">Como funciona</span>
+            <h2>Três passos.</h2>
+            <p class="lead">Essa página é o último. Preenche o formulário e a equipe da Replit cuida do resto.</p>
+          </div>
+
+          <ol class="how-steps">
+            <li class="how-step" data-reveal>
+              <p class="how-step-num">ETAPA 01</p>
+              <h3>Ativa o Replit Core</h3>
+              <p>Usa o cupom <span class="cpn">SUPERTEAM20</span> na ativação da conta Replit. Você ganha o plano Core pra prototipar.</p>
+            </li>
+
+            <li class="how-step" data-reveal>
+              <p class="how-step-num">ETAPA 02</p>
+              <h3>Constrói e posta</h3>
+              <p>Constrói o projeto. Posta sobre a experiência nas redes marcando <span class="mention">@Replit</span>. É o que destrava a <span class="tag">+$100 em créditos</span>.</p>
+            </li>
+
+            <li class="how-step how-step-clickable" data-reveal>
+              <p class="how-step-num">ETAPA 03</p>
+              <h3>Submeta aqui</h3>
+              <p>Preencha o formulário com o e-mail <strong>exato</strong> da sua conta Replit + os links do projeto e do post.</p>
+              <span class="how-step-arrow" aria-hidden="true">Abrir formulário →</span>
+              <button class="how-step-overlay" type="button" data-open-modal aria-label="Abrir formulário de submissão"></button>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <!--  PRIZES — DARK ANCHOR                                       -->
+      <!-- ========================================================== -->
+      <section class="prizes" id="premiacao">
+        <div class="prizes-inner">
+          <div class="section-heading section-heading-center" data-reveal>
+            <span class="eyebrow eyebrow-light">Premiação</span>
+            <h2><em>$10.000</em> USDC + créditos Replit.</h2>
+            <p class="lead">
+              USDC pela Superteam Brasil. Mais créditos Replit em cada colocação.
+            </p>
+          </div>
+
+          <div class="prize-grid">
+            <div class="prize-head">Colocação</div>
+            <div class="prize-head">USDC · Superteam Brasil</div>
+            <div class="prize-head">Créditos Replit</div>
+
+            <div class="prize-pos prize-row-top">1º</div>
+            <div class="prize-usdc prize-row-top">$3.000</div>
+            <div class="prize-credits">+ $500</div>
+
+            <div class="prize-pos">2º</div>
+            <div class="prize-usdc">$2.500</div>
+            <div class="prize-credits">+ $350</div>
+
+            <div class="prize-pos">3º</div>
+            <div class="prize-usdc">$1.750</div>
+            <div class="prize-credits">+ $250</div>
+
+            <div class="prize-pos">4º</div>
+            <div class="prize-usdc">$1.000</div>
+            <div class="prize-credits">+ $200</div>
+
+            <div class="prize-pos">5º</div>
+            <div class="prize-usdc">$500</div>
+            <div class="prize-credits">+ $150</div>
+
+            <div class="prize-pos">6º–10º</div>
+            <div class="prize-usdc">$250 cada</div>
+            <div class="prize-credits">+ $110 cada</div>
+          </div>
+
+          <div class="prizes-footnote" data-reveal>
+            <p><strong>USDC</strong> — pago pela Superteam Brasil via Superteam Earn depois do anúncio dos vencedores no Colosseum.</p>
+            <p><strong>Créditos Replit</strong> — caem direto na conta informada no formulário. O email tem que ser o mesmo do login Replit.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <!--  FAQ — ACCORDION                                            -->
+      <!-- ========================================================== -->
+      <section class="faq" id="faq">
+        <div class="faq-inner">
+          <div class="section-heading" data-reveal>
+            <span class="eyebrow">Perguntas frequentes</span>
+            <h2>As dúvidas que chegam mais.</h2>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item" data-reveal>
+              <summary>O que libera os +$100 em créditos?</summary>
+              <div class="faq-answer">
+                Construir com o Replit Core (ativado via cupom <strong>SUPERTEAM20</strong>) e postar sobre a experiência nas redes marcando <strong>@Replit</strong>. Se quiser, marca o <strong>@Marcelo</strong> também pra ajudar a amplificar.
+              </div>
+            </details>
+
+            <details class="faq-item" data-reveal>
+              <summary>Quando os créditos caem na minha conta?</summary>
+              <div class="faq-answer">
+                A equipe da Replit revisa submissões em até 7 dias. Depois do anúncio dos vencedores, os créditos caem na conta Replit em até 14 dias.
+              </div>
+            </details>
+
+            <details class="faq-item" data-reveal>
+              <summary>Errei algo no formulário. Posso submeter de novo?</summary>
+              <div class="faq-answer">
+                Não. Manda um email pra <a href="mailto:parcerias@superteambr.com">parcerias@superteambr.com</a> com teu protocolo e a correção — a gente ajusta no backend.
+              </div>
+            </details>
+
+            <details class="faq-item" data-reveal>
+              <summary>O prêmio em USDC é pago por essa página?</summary>
+              <div class="faq-answer">
+                Não. O USDC da Superteam Brasil é pago separado, via Superteam Earn / Colosseum. Essa página é só pros créditos Replit — que somam em cima do USDC.
+              </div>
+            </details>
+
+            <details class="faq-item" data-reveal>
+              <summary>Sou do The Garage. A submissão também é aqui?</summary>
+              <div class="faq-answer">
+                Sim. Escolhe <strong>"The Garage"</strong> na trilha do formulário. Mesmo fluxo: cupom SUPERTEAM20 + post nas redes marcando @Replit.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <!--  FINAL CTA                                                  -->
+      <!-- ========================================================== -->
+      <section class="final-cta">
+        <div class="final-cta-inner" data-reveal>
+          <span class="eyebrow eyebrow-light">Pronto?</span>
+          <h2>Submete agora.<br /><em>Leva dois minutos.</em></h2>
+          <p>Email da conta Replit, link do projeto, link do post. Só isso.</p>
+          <button class="btn btn-large" data-open-modal>
+            Submeter <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!--  FOOTER — minimal                                             -->
+    <!-- ============================================================ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="footer-logo" href="https://www.superteambr.com" target="_blank" rel="noreferrer" aria-label="Superteam Brasil">
+          <img src="./ST-EMERAL-GREEN-HORIZONTAL.png" alt="Superteam Brasil" />
+        </a>
+        <nav class="footer-socials" aria-label="Redes sociais">
+          <a href="https://x.com/SuperteamBR" target="_blank" rel="noreferrer">X</a>
+          <a href="https://www.instagram.com/superteam.brasil/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://discord.gg/ZSBytd27Yg" target="_blank" rel="noreferrer">Discord</a>
+          <a href="https://www.superteambr.com" target="_blank" rel="noreferrer">superteambr.com</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!--  MODAL                                                        -->
+    <!-- ============================================================ -->
+    <div class="modal" id="submission-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-card" role="document">
+        <button class="modal-close" data-close-modal aria-label="Fechar">×</button>
+
+        <div class="modal-view" data-view="form">
+          <header class="modal-header">
+            <span class="eyebrow">Submissão</span>
+            <h2 id="modal-title">Submete teu projeto.</h2>
+            <p>Dois minutos. Campos com <span style="color: var(--emerald); font-weight: 700;">●</span> são obrigatórios.</p>
+          </header>
+
+          <div class="modal-body">
+            <form id="submission-form" action="/api/submit" method="POST" novalidate>
+              <div class="form-grid">
+
+                <fieldset class="form-field" style="border: none;">
+                  <legend class="form-label">Trilha <span class="req">●</span></legend>
+                  <div class="form-radio-group">
+                    <label class="form-radio">
+                      <input type="radio" name="trilha" value="hackathon" required />
+                      <span>Frontier Hackathon</span>
+                    </label>
+                    <label class="form-radio">
+                      <input type="radio" name="trilha" value="garage" />
+                      <span>The Garage</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div class="form-field">
+                  <label class="form-label" for="project-name">
+                    Nome do projeto <span class="req">●</span>
+                  </label>
+                  <input type="text" id="project-name" name="project_name" class="form-input" required maxlength="80" placeholder="Ex: Solana Pay Checkout" />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-label" for="lead-name">
+                      Responsável <span class="req">●</span>
+                    </label>
+                    <input type="text" id="lead-name" name="lead_name" class="form-input" required placeholder="Contato principal" />
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="whatsapp">
+                      WhatsApp <span class="req">●</span>
+                    </label>
+                    <input type="tel" id="whatsapp" name="whatsapp" class="form-input" required placeholder="+55 11 99999-9999" />
+                  </div>
+                </div>
+
+                <div class="form-field form-field-critical">
+                  <label class="form-label" for="replit-email">
+                    Email da conta Replit <span class="req">●</span>
+                    <span class="hint">exato do login</span>
+                  </label>
+                  <input type="email" id="replit-email" name="replit_email" class="form-input" required placeholder="email-exato-da-conta-replit@..." />
+                  <p class="form-help">É pra cá que os créditos vão. <strong>Um typo aqui = crédito perdido.</strong></p>
+                </div>
+
+                <div class="form-field form-field-critical">
+                  <label class="form-label" for="replit-email-confirm">
+                    Confirma o email <span class="req">●</span>
+                  </label>
+                  <input type="email" id="replit-email-confirm" name="replit_email_confirm" class="form-input" required onpaste="return false;" placeholder="Digita de novo. Sem copiar e colar." />
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label" for="members">
+                    Integrantes <span class="req">●</span>
+                  </label>
+                  <textarea id="members" name="members" class="form-textarea" required placeholder="Um nome por linha. Se for solo, só o teu."></textarea>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label" for="project-link">
+                    Link do projeto <span class="req">●</span>
+                  </label>
+                  <input type="url" id="project-link" name="project_link" class="form-input" required placeholder="replit.com/@... · github.com/... · Colosseum" />
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label" for="post-link">
+                    Link do post marcando @Replit <span class="req">●</span>
+                  </label>
+                  <input type="url" id="post-link" name="post_link" class="form-input" required placeholder="Link direto do post nas redes" />
+                  <p class="form-help">Sem o post marcando @Replit, os <strong>+$100 em créditos não são liberados</strong>.</p>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label" for="discord">
+                    Discord <span class="hint">opcional</span>
+                  </label>
+                  <input type="text" id="discord" name="discord" class="form-input" placeholder="usuario" />
+                  <p class="form-help">A gente te avisa aqui quando os créditos caírem.</p>
+                </div>
+
+                <label class="form-check">
+                  <input type="checkbox" name="cupom_confirmed" required />
+                  <span>
+                    <strong>Ativei o Replit Core com o cupom SUPERTEAM20.</strong><br />
+                    Sem cupom ativado, a submissão é rejeitada. <span style="color: var(--emerald); font-weight: 700;">●</span>
+                  </span>
+                </label>
+
+                <label class="form-check">
+                  <input type="checkbox" name="lgpd_consent" required />
+                  <span>
+                    Autorizo a Superteam Brasil a compartilhar meus dados com a <strong>Replit, Inc. (EUA)</strong> para validar a submissão e liberar os créditos. Li a <a href="/privacidade" target="_blank">Política de Privacidade</a>. <span style="color: var(--emerald); font-weight: 700;">●</span>
+                  </span>
+                </label>
+
+                <div class="form-submit-area">
+                  <button type="submit" class="btn btn-primary btn-large btn-full">
+                    Enviar <span class="btn-arrow">→</span>
+                  </button>
+                  <p class="form-microcopy">
+                    Você recebe o protocolo por email. Dúvidas: <a href="mailto:parcerias@superteambr.com">parcerias@superteambr.com</a>
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="modal-view success" data-view="success" hidden>
+          <div class="success-stamp">
+            <p class="success-stamp-label">Protocolo</p>
+            <p class="success-stamp-id" id="success-protocol">SBR-2026-AZ-3F91</p>
+            <button class="success-stamp-copy" id="success-copy-btn" type="button">
+              <span>Copiar protocolo</span>
+            </button>
+          </div>
+
+          <div class="success-body">
+            <h2>Submissão recebida.</h2>
+            <p>A equipe Replit vai revisar e liberar os créditos na conta informada.</p>
+          </div>
+
+          <div class="success-next">
+            <span class="eyebrow">O que acontece agora</span>
+            <ol>
+              <li>Validação do cupom SUPERTEAM20 — até 48h.</li>
+              <li>Revisão do projeto + post — até 7 dias.</li>
+              <li>Anúncio dos vencedores — Colosseum + Discord STBR.</li>
+              <li>Depósito dos créditos — até 14 dias após o anúncio.</li>
+            </ol>
+          </div>
+
+          <div class="success-actions">
+            <a href="https://discord.gg/ZSBytd27Yg" class="btn btn-primary" target="_blank" rel="noreferrer">
+              Entrar no Discord <span class="btn-arrow">→</span>
+            </a>
+            <button class="btn btn-ghost" data-close-modal>Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ============================================================ //
+      //  MODAL + A11Y                                                 //
+      // ============================================================ //
+      const modal = document.getElementById('submission-modal');
+      const openBtns = document.querySelectorAll('[data-open-modal]');
+      const closeBtns = document.querySelectorAll('[data-close-modal]');
+      const formView = modal.querySelector('[data-view="form"]');
+      const successView = modal.querySelector('[data-view="success"]');
+      const form = document.getElementById('submission-form');
+      const emailInput = document.getElementById('replit-email');
+      const emailConfirmInput = document.getElementById('replit-email-confirm');
+      const protocolEl = document.getElementById('success-protocol');
+      const copyBtn = document.getElementById('success-copy-btn');
+      const cardEl = modal.querySelector('.modal-card');
+
+      let lastFocus = null;
+
+      const focusables = () =>
+        modal.querySelectorAll(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+
+      function openModal() {
+        lastFocus = document.activeElement;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
+        setTimeout(() => {
+          const firstInput =
+            modal.querySelector('input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"])') ||
+            modal.querySelector('input');
+          if (firstInput) firstInput.focus({ preventScroll: true });
+        }, 300);
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
+        if (lastFocus) lastFocus.focus({ preventScroll: true });
+        setTimeout(() => {
+          formView.hidden = false;
+          successView.hidden = true;
+          form.reset();
+          cardEl.scrollTop = 0;
+        }, 400);
+      }
+
+      openBtns.forEach((b) => b.addEventListener('click', openModal));
+      closeBtns.forEach((b) => b.addEventListener('click', closeModal));
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key === 'Tab') {
+          const list = focusables();
+          if (!list.length) return;
+          const first = list[0];
+          const last = list[list.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+      function validateEmailMatch() {
+        const a = emailInput.value.trim().toLowerCase();
+        const b = emailConfirmInput.value.trim().toLowerCase();
+        if (b && a !== b) emailConfirmInput.setCustomValidity('Os emails não batem.');
+        else emailConfirmInput.setCustomValidity('');
+      }
+      emailInput.addEventListener('input', validateEmailMatch);
+      emailConfirmInput.addEventListener('input', validateEmailMatch);
+
+      function generateProtocol() {
+        const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+        const pick = (n) =>
+          Array.from({ length: n }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+        const now = new Date();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        return `SBR-${now.getFullYear()}${mm}-${pick(2)}-${pick(4)}`;
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        const data = Object.fromEntries(new FormData(form));
+        console.log('[STBR×Replit] Submission payload:', data);
+
+        protocolEl.textContent = generateProtocol();
+        formView.hidden = true;
+        successView.hidden = false;
+        cardEl.scrollTop = 0;
+      });
+
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(protocolEl.textContent);
+          const label = copyBtn.querySelector('span');
+          const orig = label.textContent;
+          label.textContent = 'Copiado ✓';
+          setTimeout(() => { label.textContent = orig; }, 1800);
+        } catch (_) {}
+      });
+
+      // ============================================================ //
+      //  REVEAL + PRIZE ROW STAGGER                                   //
+      // ============================================================ //
+      const revealEls = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, i) => {
+              if (entry.isIntersecting) {
+                entry.target.style.transitionDelay = `${Math.min(i * 40, 280)}ms`;
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      const prizeRows = document.querySelectorAll('[data-prize-row]');
+      if ('IntersectionObserver' in window) {
+        const pio = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const idx = Array.from(prizeRows).indexOf(entry.target);
+                Array.from(entry.target.children).forEach((child, i) => {
+                  child.style.transitionDelay = `${idx * 70 + i * 30}ms`;
+                });
+                entry.target.classList.add('is-visible');
+                pio.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.3 }
+        );
+        prizeRows.forEach((r) => pio.observe(r));
+      } else {
+        prizeRows.forEach((r) => r.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>
