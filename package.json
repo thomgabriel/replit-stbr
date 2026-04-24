@@ -1,0 +1,10 @@
+{
+  "name": "replit-stbr",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portal de submissão — Superteam Brasil × Replit (Frontier Hackathon Brazil Track)",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.2"
+  }
+}

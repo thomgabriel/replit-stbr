@@ -1,2 +1,11 @@
 .DS_Store
 **/.DS_Store
+
+# Env — NEVER commit
+.env
+.env.local
+.env.*.local
+
+# Deps
+node_modules/
+.vercel
