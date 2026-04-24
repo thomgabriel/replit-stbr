@@ -85,13 +85,16 @@ function getClientIp(req) {
 }
 
 function getAllowedOrigins() {
-  const primary = process.env.SITE_ORIGIN;
+  const envOrigins = (process.env.SITE_ORIGIN || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
   const defaults = [
     'http://localhost:3000',
     'http://localhost:5173',
     'http://127.0.0.1:3000',
   ];
-  return new Set([primary, ...defaults].filter(Boolean));
+  return new Set([...envOrigins, ...defaults]);
 }
 
 // Honeypot / time-check / early bot detection: return 200 with a fake protocol.
